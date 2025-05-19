@@ -90,4 +90,25 @@ r3-infrastructure-kong-68f5fd46dd-lpwvd            2/2     Running            3 
 
 ```
 
+## Installing E2 interface to connect RAN Node:
+Repo link : 
+```bash
+https://github.com/o-ran-sc/sim-e2-interface/tree/h-release/e2sim
+
+#   sudo apt-get update
+#   sudo apt-get install -y build-essential git cmake libsctp-dev lksctp-tools autoconf automake libtool bison flex libboost-all-dev
+#   sudo apt-get clean
+#   apt-get install cmake g++ libsctp-dev
+#     git clone “https://github.com/o-ran-sc/sim-e2-interface.git” 
+#     cd sim-e2-interface/e2sim
+#    vi e2sm_examples/kpm_e2sm/Dockerfile     [modify the last line to sleep 100000000]
+#    mkdir build
+#    cd build/
+#   cmake .. && make package && cmake .. -DDEV_PKG=1 && make package
+#   cp *.deb ../e2sm_examples/kpm_e2sm/
+#   cd ../e2sm_examples/kpm_e2sm/
+#   docker build -t oransim:0.0.999 .
+#   docker run -d --name oransim -it oransim:0.0.999
+
+```
 
