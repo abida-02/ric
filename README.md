@@ -24,8 +24,12 @@ This repository provides a comprehensive guide for installing the O-RAN Near-Rea
 ```bash
 git clone https://gerrit.o-ran-sc.org/r/ric-plt/ric-dep```
 ```bash
+# install kubernetes, kubernetes-CNI, helm and docker
+
  cd ric-dep/bin
 ./install_k8s_and_helm.sh
+# install chartmuseum into helm and add ric-common templates
+
 ./install_common_templates_to_helm.sh```
 ```bash
 sudo vim versions.txt
@@ -58,7 +62,8 @@ vi ../RECIPE_EXAMPLE/example_recipe_oran_h_release.yaml
 ## Replace ricip and auxip with your VM's local IP.
 ```
 
-
+## Installing the RIC
+After updating the recipe you can deploy the RIC with the command below. 
 ```bash
 ## Run the install script:
 ./install -f ../RECIPE_EXAMPLE/example_recipe_oran_h_release.yaml
@@ -66,6 +71,21 @@ vi ../RECIPE_EXAMPLE/example_recipe_oran_h_release.yaml
 ## Checking the Deployment Status
 ```bash
 kubectl get pods -A
+# kubectl get pods -n ricplt
+NAME                                               READY   STATUS             RESTARTS   AGE
+deployment-ricplt-a1mediator-69f6d68fb4-7trcl      1/1     Running            0          159m
+deployment-ricplt-appmgr-845d85c989-qxd98          2/2     Running            0          160m
+deployment-ricplt-dbaas-7c44fb4697-flplq           1/1     Running            0          159m
+deployment-ricplt-e2mgr-569fb7588b-wrxrd           1/1     Running            0          159m
+deployment-ricplt-e2term-alpha-db949d978-rnd2r     1/1     Running            0          159m
+deployment-ricplt-jaegeradapter-585b4f8d69-tmx7c   1/1     Running            0          158m
+deployment-ricplt-rsm-755f7c5c85-j7fgf             1/1     Running            0          158m
+deployment-ricplt-rtmgr-c7cdb5b58-2tk4z            1/1     Running            0          160m
+deployment-ricplt-submgr-5b4864dcd7-zwknw          1/1     Running            0          159m
+deployment-ricplt-vespamgr-864f95c9c9-5wth4        1/1     Running            0          158m
+r3-infrastructure-kong-68f5fd46dd-lpwvd            2/2     Running            3          160m
+
+
 ```
 
 
