@@ -1,6 +1,6 @@
-# ric
 
-# O-RAN RIC Installation & Setup Guide
+
+# O-RAN RIC Installation & Setup Guide, E2 interface integration
 
 This repository provides a comprehensive guide for installing the O-RAN Near-Real-Time RIC (RIC-PLT) from scratch, deploying the E2 interface, integrating with gNB, and onboarding xApps using the official O-RAN Software Community (OSC) and third-party tools.
 
@@ -124,8 +124,8 @@ e2:
 ```
 ## Verify the gNB and RIC Integration: 
 
-# Start the RIC using the following command:
+#### Start the RIC using the following command:
 ```bash
  Kubectl logs -f -n ricplt <e2mgr pod name>    #  run-    kubectl get pods -A  [paste the e2mgr pod name in the command]
 ```
-# Then start the core and gNB. If the E2 connection is successful, e2mgr log will print the connection status.
+#### Then start the core and gNB. If the E2 connection is successful, e2mgr log will print the connection status.
