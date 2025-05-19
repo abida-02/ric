@@ -46,7 +46,7 @@ docker.io/prom/alertmanager:v0.20.0
 
 ```bash
 for i in `cat versions.txt`; do echo $i; docker pull $i; done
-docker image list | grep nexus
+docker image list | grep nexus```
 Edit the recipe file:
 
 bash
