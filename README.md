@@ -22,12 +22,14 @@ This repository provides a comprehensive guide for installing the O-RAN Near-Rea
 ## RIC Installation from Scratch
 
 ```bash
-git clone https://gerrit.o-ran-sc.org/r/ric-plt/ric-dep
-cd ric-dep/bin
+git clone https://gerrit.o-ran-sc.org/r/ric-plt/ric-dep```
+```bash
+ cd ric-dep/bin
 ./install_k8s_and_helm.sh
-./install_common_templates_to_helm.sh
+./install_common_templates_to_helm.sh```
+```bash
 sudo vim versions.txt
-Paste the following: 
+# Paste the following: 
 nexus3.o-ran-sc.org:10004/o-ran-sc/ric-plt-a1:3.1.1
 nexus3.o-ran-sc.org:10002/o-ran-sc/ric-plt-appmgr:0.5.7
 nexus3.o-ran-sc.org:10002/o-ran-sc/ric-plt-dbaas:0.6.3
@@ -47,20 +49,19 @@ docker.io/prom/alertmanager:v0.20.0
 ```bash
 for i in `cat versions.txt`; do echo $i; docker pull $i; done
 docker image list | grep nexus```
-Edit the recipe file:
+```bash
+#Edit the recipe file:
 
-bash
-Copy
-Edit
+
 vi ../RECIPE_EXAMPLE/example_recipe_oran_h_release.yaml
-Replace ricip and auxip with your VM's local IP.
+## Replace ricip and auxip with your VM's local IP. ```
 
-Run the install script:
 
-bash
-Copy
-Edit
-./install -f ../RECIPE_EXAMPLE/example_recipe_oran_h_release.yaml
-kubectl get pods -A
+```bash
+## Run the install script:
+./install -f ../RECIPE_EXAMPLE/example_recipe_oran_h_release.yaml```
+## Checking the Deployment Status
+```bash
+kubectl get pods -A```
 
 
