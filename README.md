@@ -129,3 +129,40 @@ e2:
  Kubectl logs -f -n ricplt <e2mgr pod name>    #  run-    kubectl get pods -A  [paste the e2mgr pod name in the command]
 ```
 #### Then start the core and gNB. If the E2 connection is successful, e2mgr log will print the connection status.
+
+## xApp Deployment: 
+Before any xApp can be deployed, its Helm chart must be loaded into this private Helm repository.
+```bash
+docker run --rm -u 0 -it -d -p 8090:8080 -e DEBUG=1 -e STORAGE=local -e    STORAGE_LOCAL_ROOTDIR=/charts -v $(pwd)/charts:/charts chartmuseum/chartmuseum:latest
+
+export CHART_REPO_URL=http://0.0.0.0:8090
+```
+## Install dms_cli tool 
+```bash
+git clone https://gerrit.o-ran-sc.org/r/ric-plt/appmgr -b h-release
+cd appmgr/xapp_orchestrater/dev/xapp_onboarder
+apt-get install python3-pip
+pip3 uninstall xapp_onboarder
+pip3 install ./
+chmod 755 /usr/local/bin/dms_cli
+ls -la /usr/local/lib/python3.8
+chmod -R 755 /usr/local/lib/python3.8
+chmod -R 755 /usr/local/lib/python3.8
+
+```
+## Alexandre Huff’s Repository : https://github.com/alexandre-huff/bouncer-xapp
+```bash
+git clone “ https://github.com/alexandre-huff/bouncer-xapp.git”
+cd /bouncer-xapp/Bouncer/
+docker build -t example.com:80/bouncer:latest .
+         [ After finishing the command go to config-file.json inside the init folder.  Modify the registry to example.com/80 ]
+
+ export CHART_REPO_URL=http://0.0.0.0:8090
+```
+## Onboard your xApp
+```bash
+cd init/
+dms_cli onboard config-file.json schema.json
+dms_cli install bouncer-xapp 2.0.0 ricxapp     [before running the the install command ric, and gnb must be running]
+
+```
