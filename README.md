@@ -22,7 +22,8 @@ This repository provides a comprehensive guide for installing the O-RAN Near-Rea
 ## RIC Installation from Scratch
 
 ```bash
-git clone https://gerrit.o-ran-sc.org/r/ric-plt/ric-dep```
+git clone https://gerrit.o-ran-sc.org/r/ric-plt/ric-dep
+```
 ```bash
 # install kubernetes, kubernetes-CNI, helm and docker
 
@@ -30,7 +31,8 @@ git clone https://gerrit.o-ran-sc.org/r/ric-plt/ric-dep```
 ./install_k8s_and_helm.sh
 # install chartmuseum into helm and add ric-common templates
 
-./install_common_templates_to_helm.sh```
+./install_common_templates_to_helm.sh
+```
 ```bash
 sudo vim versions.txt
 # Paste the following: 
