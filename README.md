@@ -110,4 +110,22 @@ https://github.com/o-ran-sc/sim-e2-interface/tree/h-release/e2sim
   docker run -d --name oransim -it oransim:0.0.999
 
 ```
+## Integrating RIC and gNB:
 
+To integrate gNB with RIC,  go to the gNB config file.  In the addr give the machine IP address of the RIC. At the bind_addr give the machine ip where gnb is running. Use port 32222
+
+```bash
+e2:
+  enable_du_e2: true                # Enable DU E2 agent (one for each DU instance)
+  e2sm_kpm_enabled: true            # Enable KPM service module
+  e2sm_rc_enabled: true             # Enable RC service module
+  addr: 127.0.0.1                   # RIC IP address
+  port: 36421                       # RIC port
+```
+## Verify the gNB and RIC Integration: 
+
+# Start the RIC using the following command:
+```bash
+ Kubectl logs -f -n ricplt <e2mgr pod name>    #  run-    kubectl get pods -A  [paste the e2mgr pod name in the command]
+```
+# Then start the core and gNB. If the E2 connection is successful, e2mgr log will print the connection status.
