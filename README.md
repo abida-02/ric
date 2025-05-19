@@ -43,7 +43,7 @@ docker.io/prom/prometheus:v2.18.1
 docker.io/kong/kubernetes-ingress-controller:0.7.0
 docker.io/kong:1.4
 docker.io/prom/alertmanager:v0.20.0
-
+```
 ```bash
 for i in `cat versions.txt`; do echo $i; docker pull $i; done
 docker image list | grep nexus```
